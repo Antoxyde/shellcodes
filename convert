@@ -3,5 +3,7 @@
 f=$(mktemp)
 nasm -f elf64 "$1" -o "$f.o"
 ld "$f.o" -o "$f"
+
+objdump -d -M intel "$f"
 objdump -d "$f"|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
-rm "$f"
+#rm "$f"

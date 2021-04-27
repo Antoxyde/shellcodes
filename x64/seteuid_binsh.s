@@ -4,8 +4,8 @@ global _start
 
 _start:
     ; seteuid(x,y)
-    mov    rdi,x
-    mov    rsi,y
+    mov    rdi,1000
+    mov    rsi,1000
     mov    al,0x71
     syscall
 
